@@ -2,10 +2,12 @@ const {Telegraf} = require('telegraf')
 module.exports = {
     _token: "",
     _bot: {},
+    _name: [],
     _modules: [],
-    init: function(token){
+    init: function(token,name){
         this._token = token;
         this._bot = new Telegraf(this._token)
+        this._name = name;
     },
     useIt(what){
         this._bot.use(what);

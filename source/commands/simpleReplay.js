@@ -7,11 +7,13 @@ class simpleReplay extends baseCommand {
           ['simple','simp'],
           callback
       );
+      this._useRealWordKeys = true;
+      this._realWordKeys = ['с','s','repl','реплай','реп']
     }
   }
 
-function callback(ctx) {
-    var arg1 = ctx.state.command.args[0];
+function callback(ctx,args) {
+    var arg1 = ctx.state?.command?.args[0] || args[0];
     ctx.reply(`${ctx.message.from.first_name}: ${arg1}`);
 }
 

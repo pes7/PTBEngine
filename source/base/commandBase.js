@@ -2,6 +2,8 @@ class CommandBase {
     _name = ""
     _describe = ""
     _wordKeys = []
+    _realWordKeys = []
+    _useRealWordKeys = false
     _callback = {}
     constructor (_name,_describe,_wordKeys,_callback){
       this._name = _name;
