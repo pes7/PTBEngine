@@ -1,8 +1,8 @@
 {
-  "name": "PetShop",
+  "name": "PTBEngeen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "source/main.js",
   "dependencies": {
     "mongodb": "^3.6.9",
     "telegraf": "^4.3.0"
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pes7/PetShop.git"
+    "url": "git+https://github.com/pes7/PTBEngine.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pes7/PetShop/issues"
+    "url": "https://github.com/pes7/PTBEngine/issues"
   },
-  "homepage": "https://github.com/pes7/PetShop#readme"
+  "homepage": "https://github.com/pes7/PTBEngine#readme"
 }
