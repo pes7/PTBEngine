@@ -6,13 +6,24 @@ const commandsModule = require('./modules/commands');
 const simpleReplay = require('./commands/simpleReplay');
 const louLevel = require('./commands/louLevelTestCommand');
 
+const commandBase = require('./base/commandBase');
+
 module.exports = {
     bot,
-    args,
-    mongoClient,
-    commandsModule,
-    simpleReplay,
-    louLevel
+    "engine":{
+        args,
+        mongoClient
+    },
+    "modules":{
+        commandsModule
+    },
+    "commands":{
+        simpleReplay,
+        louLevel
+    },
+    "base":{
+        commandBase
+    }
 }
   
 /*mongoClient.init({

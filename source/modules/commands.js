@@ -1,6 +1,8 @@
 const botClient = require('../bot');
 module.exports = {
     _name: "commands",
+    _describe = "command module, for register commands in bot",
+    _version = "",
     _commandList: [],
     _realWordCommandList: [],
     init: function(commandList){
