@@ -6,7 +6,16 @@ const commandsModule = require('./modules/commands');
 const simpleReplay = require('./commands/simpleReplay');
 const louLevel = require('./commands/louLevelTestCommand');
 
-mongoClient.init({
+module.exports = {
+    bot,
+    args,
+    mongoClient,
+    commandsModule,
+    simpleReplay,
+    louLevel
+}
+  
+/*mongoClient.init({
     hostname: '127.0.0.1',
     port: 27017,
     dbName: 'petShop',
@@ -28,4 +37,4 @@ bot.addModule(commandsModule.init([
     simpleReplay.init(),
     louLevel.init()
 ]));
-bot.launch();
+bot.launch();*/
