@@ -42,6 +42,8 @@ mongoClient.registerTables([
     "Payments"
 ])
 
+//mongoClient.registerTablesFromJson(["test","dude"],["C:/Users/Ukolov/PetShop/PetShop/item.json","C:/Users/Ukolov/PetShop/PetShop/location.json"])
+
 bot.init("1836718524:AAE1Ouo5ydICSjaxVtc_QLOUmIf8NLEh6zg",['шоп','магаз']);
 bot.useIt(args());
 bot.addModule(commandsModule.init([
