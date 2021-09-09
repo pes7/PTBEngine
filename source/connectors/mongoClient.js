@@ -13,28 +13,45 @@ module.exports = {
     init: function(repositoryParams,onError,onConnect=null){
         this._client = null;
         this._error = onError;
+        this._repositoryParams = repositoryParams;
         this._dbName = repositoryParams.dbName;
 
         let url = "mongodb://" + repositoryParams.user + ":" + repositoryParams.password + "@" + repositoryParams.hostname + ":" 
                                + repositoryParams.port;
 
-        console.log('Mongo connecting');
+        if(this._client && this._client.isConnected()){
+            this._client.close();
+            console.log('Mongo client closed.');
+        }
+
+        console.log('Mongo connecting...');
         MongoClient.connect(url,options,(err, dbClient) => {
             if (err) {
                 this._error(err);
-                setTimeout((params,onError)=>{
-                    this.init(params,onError)
+                setTimeout((repositoryParams,onError)=>{
+                    this.init(repositoryParams,onError)
                 },options.reconnectInterval,repositoryParams,onError)
             }else{
-                console.log('Mongo connected');
-                this._client = dbClient;
-                this._createCollections();
-                this._createCollectionsFromJson();
-                if(onConnect){
-                    onConnect();
-                }
+                if(dbClient && dbClient.isConnected()){
+                    console.log('Mongo connected!');
+                    this._client = dbClient;
+                    this._createCollections();
+                    this._createCollectionsFromJson();
+                    if(onConnect){
+                        onConnect();
+                    }
+                }else{
+                    console.log('Mongo reconnect...');
+                    setTimeout((repositoryParams,onError)=>{
+                        this.init(repositoryParams,onError)
+                    },options.reconnectInterval,repositoryParams,onError)
+                }   
             }
         });
+    },
+    reconnect: function () {
+        console.log('Mongo reconnect by command...');
+        this.init(this._repositoryParams,this._error)
     },
     getClient: function(){
         return this._client;
